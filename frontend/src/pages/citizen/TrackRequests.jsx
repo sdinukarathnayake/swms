@@ -22,6 +22,15 @@ function TrackRequests() {
     'CANCELLED': 'Cancelled'
   };
 
+  const categoryDisplay = {
+    'OVERFLOWING_BIN': 'Overflowing Bin',
+    'DAMAGED_BIN': 'Damaged Bin',
+    'MISSING_BIN': 'Missing Bin',
+    'ILLEGAL_DUMPING': 'Illegal Dumping',
+    'REGULAR_PICKUP_REQUEST': 'Regular Pickup Request',
+    'OTHER': 'Other'
+  };
+
   useEffect(() => {
     fetchRequests();
   }, [currentPage]);
@@ -29,11 +38,12 @@ function TrackRequests() {
   const fetchRequests = async () => {
     try {
       const response = await getCitizenRequests(currentPage, requestsPerPage);
-      if (response.success) {
+      // Handle ApiResponse wrapper structure
+      if (response && response.success) {
         setRequests(response.data.content || []);
         setTotalPages(response.data.totalPages || 1);
       } else {
-        console.error('Failed to fetch requests:', response.message);
+        console.error('Failed to fetch requests:', response ? response.message : 'Unknown error');
         setRequests([]);
       }
     } catch (error) {
@@ -132,7 +142,7 @@ function TrackRequests() {
                             {request.requestId}
                           </td>
                           <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                            {request.category?.displayName || request.category}
+                            {categoryDisplay[request.category] || request.category}
                           </td>
                           <td className="px-6 py-4 whitespace-nowrap">
                             <span className={`inline-flex px-2 py-1 text-xs font-semibold rounded-full ${getStatusColor(request.status)}`}>
