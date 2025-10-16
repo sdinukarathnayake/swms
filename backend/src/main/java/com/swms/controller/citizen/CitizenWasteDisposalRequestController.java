@@ -120,7 +120,8 @@ public class CitizenWasteDisposalRequestController {
         String email = userDetails.getUsername();
         Optional<Citizen> citizenOpt = citizenRepository.findByEmail(email);
         if (citizenOpt.isEmpty()) {
-            throw new RuntimeException("Citizen not found with email: " + email);
+            // Improved error message for debugging
+            throw new RuntimeException("Citizen not found with email: " + email + ". Current user details username: " + userDetails.getUsername());
         }
         
         return citizenOpt.get().getUserId();

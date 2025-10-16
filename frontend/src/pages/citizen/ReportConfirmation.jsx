@@ -65,7 +65,7 @@ function ReportConfirmation() {
                   <p className="text-gray-900 font-mono">{requestData.requestId}</p>
                 </div>
                 <div>
-                  <span className="font-medium text-gray-700">Category:</span>
+                  <span className="font-medium text-gray-700">Category (type of issue):</span>
                   <p className="text-gray-900">{categoryDisplay[requestData.category] || requestData.category}</p>
                 </div>
                 <div>

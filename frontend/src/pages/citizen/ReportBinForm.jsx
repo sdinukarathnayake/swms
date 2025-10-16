@@ -134,7 +134,7 @@ function ReportBinForm() {
               {/* Category */}
               <div className="mb-6">
                 <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Waste Category *
+                  Waste Category (type of issue) *
                 </label>
                 <select
                   name="category"
@@ -180,7 +180,7 @@ function ReportBinForm() {
                   name="binId"
                   value={formData.binId}
                   onChange={handleInputChange}
-                  placeholder="Enter bin ID if applicable"
+                  placeholder="Enter bin ID if applicable (Check the sticker pasted on the bin)"
                   className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
                 />
               </div>
