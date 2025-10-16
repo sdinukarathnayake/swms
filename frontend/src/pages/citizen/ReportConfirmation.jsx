@@ -70,7 +70,7 @@ function ReportConfirmation() {
                 </div>
                 <div>
                   <span className="font-medium text-gray-700">Location:</span>
-                  <p className="text-gray-900">{requestData.location?.address}</p>
+                  <p className="text-gray-900">{requestData.address}</p>
                 </div>
                 <div>
                   <span className="font-medium text-gray-700">Submitted:</span>

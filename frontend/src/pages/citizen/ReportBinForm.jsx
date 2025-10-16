@@ -104,7 +104,7 @@ function ReportBinForm() {
         // Clear stored location
         localStorage.removeItem('selectedLocation');
         // Navigate to confirmation page with data
-        navigate('/citizen/confirmation', {
+        navigate('/citizen/report-confirmation', {
           state: {
             requestData: response.data
           }

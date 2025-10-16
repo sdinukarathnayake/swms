@@ -30,6 +30,15 @@ function RequestDetails() {
     'OTHER': 'Other'
   };
 
+  const statusTimeline = [
+    { status: 'SUBMITTED', color: 'bg-blue-500', icon: '📝' },
+    { status: 'ASSIGNED', color: 'bg-yellow-500', icon: '👤' },
+    { status: 'COLLECTION_SCHEDULED', color: 'bg-purple-500', icon: '📅' },
+    { status: 'OUT_FOR_COLLECTION', color: 'bg-orange-500', icon: '🚚' },
+    { status: 'COLLECTED', color: 'bg-green-500', icon: '✅' },
+    { status: 'RESOLVED', color: 'bg-gray-500', icon: '🏁' }
+  ];
+
   useEffect(() => {
     fetchRequestData();
   }, [id]);
@@ -156,7 +165,7 @@ function RequestDetails() {
                     <div>
                       <span className="font-medium text-gray-700">Submitted:</span>
                       <p className="text-gray-900">
-                        {new Date(request.submittedAt).toLocaleString()}
+                        {request.submittedAt ? new Date(request.submittedAt).toLocaleString() : 'N/A'}
                       </p>
                     </div>
                     {request.binId && (
@@ -227,7 +236,7 @@ function RequestDetails() {
                             {isCurrent && (
                               <p className="text-xs text-green-600 font-medium mt-1">Current Status</p>
                             )}
-                            {update && (
+                            {update && update.timestamp && (
                               <p className="text-xs text-gray-500 mt-1">
                                 {new Date(update.timestamp).toLocaleString()}
                               </p>
